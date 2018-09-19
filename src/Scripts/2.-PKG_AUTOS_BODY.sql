@@ -16,11 +16,11 @@ FROM
   END SP_LISTAR;
 
   PROCEDURE SP_INSERTAR(
-    P_CODIGO    OUT auto.codigo%TYPE,
-    P_PLACA     IN  auto.placa%TYPE,
-    P_ANO           IN  auto.ano%TYPE,
-    P_MODELO        IN  auto.modelo%TYPE,
-    P_MARCA         IN  auto.marca%TYPE
+    P_CODIGO    OUT autos.codigo%TYPE,
+    P_PLACA     IN  autos.placa%TYPE,
+    P_ANO           IN  autos.ano%TYPE,
+    P_MODELO        IN  autos.modelo%TYPE,
+    P_MARCA         IN  autos.marca%TYPE
   )AS
   BEGIN
     SELECT
@@ -41,11 +41,11 @@ FROM
   END SP_INSERTAR;
 
   PROCEDURE SP_ACTUALIZAR(
-     P_CODIGO    OUT auto.codigo%TYPE,
-    P_PLACA     IN  auto.placa%TYPE,
-    P_ANO           IN  auto.ano%TYPE,
-    P_MODELO        IN  auto.modelo%TYPE,
-    P_MARCA         IN  auto.marca%TYPE
+     P_CODIGO    OUT autos.codigo%TYPE,
+    P_PLACA     IN  autos.placa%TYPE,
+    P_ANO           IN  autos.ano%TYPE,
+    P_MODELO        IN  autos.modelo%TYPE,
+    P_MARCA         IN  autos.marca%TYPE
   )AS
   BEGIN
     UPDATE autos
@@ -59,7 +59,7 @@ FROM
   END SP_ACTUALIZAR;
 
     PROCEDURE SP_ELIMINAR(
-   P_CODIGO    OUT auto.codigo%TYPE
+   P_CODIGO    OUT autos.codigo%TYPE
   )AS
   BEGIN
    UPDATE autos

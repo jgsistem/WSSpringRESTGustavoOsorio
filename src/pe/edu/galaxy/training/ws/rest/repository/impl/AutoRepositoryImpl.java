@@ -88,15 +88,17 @@ public class AutoRepositoryImpl implements AutoRepository {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Autos> findByLikeObject(Autos auto) throws RepositoryException {
 		List<Autos> lstAutos = null;	
 		try {
-			StoredProcedureQuery spq = em.createNamedStoredProcedureQuery("auto.listar");
-						
+			StoredProcedureQuery spq = em.createNamedStoredProcedureQuery("autos.listar");
+			System.out.println("StoredProcedure " + spq);	
 			if (spq.execute()) {
-				System.out.println(spq);
+				
 				lstAutos = (List<Autos>)spq.getOutputParameterValue("P_C_CURSOR");
+				System.out.println("Lista Autos " + lstAutos);
 			}
 			em.close();
 			
@@ -115,12 +117,12 @@ public class AutoRepositoryImpl implements AutoRepository {
 
 	@Override
 	public List<Autos> findByLikeRZ(String rz) throws RepositoryException {
-		List<Autos> lstCliente = null;	
+		List<Autos> lstAutos = null;	
 		try {
-			StoredProcedureQuery spq = em.createNamedStoredProcedureQuery("auto.findByLikeRZ");
+			StoredProcedureQuery spq = em.createNamedStoredProcedureQuery("autos.findByLikeRZ");
 			spq.setParameter("P_RAZON_SOCIAL", rz);
 			if (spq.execute()) {
-				lstCliente = (List<Autos>)spq.getOutputParameterValue("P_C_CURSOR");
+				lstAutos = (List<Autos>)spq.getOutputParameterValue("P_C_CURSOR");
 				
 			}
 			em.close();
@@ -129,7 +131,7 @@ public class AutoRepositoryImpl implements AutoRepository {
 			e.printStackTrace();
 			throw new RepositoryException(e);
 		}
-		return lstCliente;
+		return lstAutos;
 	}
 
 }

@@ -2,21 +2,14 @@ package pe.edu.galaxy.training.ws.rest.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedStoredProcedureQueries;
-import javax.persistence.NamedStoredProcedureQuery;
-import javax.persistence.ParameterMode;
-import javax.persistence.StoredProcedureParameter;
+import javax.persistence.*;
 
 @NamedStoredProcedureQueries(
 		{
 				@NamedStoredProcedureQuery(
-					name="auto.listar", 
+					name="autos.listar", 
 					procedureName="PKG_AUTOS.SP_LISTAR",
-					resultClasses= Cliente.class,
-				
+					resultClasses= Cliente.class,				
 					parameters={
 								@StoredProcedureParameter(mode=ParameterMode.REF_CURSOR,name="P_C_CURSOR", type=void.class )
 						}					
@@ -33,7 +26,7 @@ import javax.persistence.StoredProcedureParameter;
 				),
 				*/
 				@NamedStoredProcedureQuery(
-						name="auto.insert", 
+						name="autos.insert", 
 						procedureName="PKG_AUTOS.SP_INSERTAR",
 						parameters={
 									@StoredProcedureParameter(mode=ParameterMode.OUT,name="P_CODIGO", type=Integer.class ),
@@ -45,7 +38,7 @@ import javax.persistence.StoredProcedureParameter;
 							}					
 				),
 				@NamedStoredProcedureQuery(
-						name="auto.update", 
+						name="autos.update", 
 						procedureName="PKG_AUTOS.SP_ACTUALIZAR",
 						parameters={
 								@StoredProcedureParameter(mode=ParameterMode.IN,name="P_CODIGO", type=Integer.class ),
@@ -57,7 +50,7 @@ import javax.persistence.StoredProcedureParameter;
 							}					
 				),
 				@NamedStoredProcedureQuery(
-						name="auto.delete", 
+						name="autos.delete", 
 						procedureName="PKG_AUTOS.SP_ELIMINAR",
 						parameters={
 									@StoredProcedureParameter(mode=ParameterMode.IN,name="P_CODIGO", type=Integer.class )
@@ -72,27 +65,27 @@ public class Autos implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="CODIGO")	
+	@Column(name="codigo")	
 	private long codigo;
 	
-	@Column(name="PLACA")	
+	@Column(name="placa")	
 	private String placa;
 	
-	@Column(name="ANO")	
+	@Column(name="ano")	
 	private int ano;
 
-	@Column(name="MDELO")	
+	@Column(name="modelo")	
 	private String modelo;
 	
-	@Column(name="MARCA")	
+	@Column(name="marca")	
 	private String marca;
 	
-	@Column(name="ESTADO")	
+	@Column(name="estado")	
 	private String estado;
 	
 	
 	public Autos() {
-		super();
+		
 	}
 	
 	
@@ -140,9 +133,5 @@ public class Autos implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
 	
 }
